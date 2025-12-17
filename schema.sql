@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS players (
   id      INTEGER PRIMARY KEY AUTOINCREMENT,
-  name    TEXT    NOT NULL UNIQUE,
+  name    TEXT    NOT NULL,
   rating  INTEGER,
   active  INTEGER NOT NULL DEFAULT 1 CHECK (active IN (0, 1))
 );
