@@ -32,12 +32,12 @@ CREATE TABLE IF NOT EXISTS games (
   black_player_id INTEGER NOT NULL,
 
   -- store result as text for now: '1-0', '0-1', '1/2-1/2', 'BYE'
-  result          TEXT,
+  result          TEXT DEFAULT 'PENDING',
 
   FOREIGN KEY (round_id) REFERENCES rounds(id) ON DELETE CASCADE,
   FOREIGN KEY (white_player_id) REFERENCES players(id),
   FOREIGN KEY (black_player_id) REFERENCES players(id),
 
   CHECK (white_player_id <> black_player_id),
-  CHECK (result IN ('1-0', '0-1', '1/2-1/2', 'BYE') OR result IS NULL)
+  CHECK (result IN ('1-0', '0-1', '1/2-1/2', 'BYE', 'PENDING') OR result IS NULL)
 );
